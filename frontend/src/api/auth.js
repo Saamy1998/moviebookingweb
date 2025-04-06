@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://moviebookingweb-ifqr.onrender.com",
 });
 
 export const registerUser = (formData) => API.post("/auth/register", formData);
