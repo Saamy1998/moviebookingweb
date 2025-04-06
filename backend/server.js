@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Movie Booking Backend is Running...");
 });
 
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/auth", require("./routes/authRoutes"));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
