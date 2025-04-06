@@ -24,6 +24,7 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   console.log("Login endpoint hit");
+  console.log("Fetched user:", user);
   console.log("Request body:", req.body);
   try {
     const user = await User.findOne({ email });
