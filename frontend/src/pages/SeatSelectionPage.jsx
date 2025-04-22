@@ -11,7 +11,7 @@ const SeatSelectionPage = () => {
   useEffect(() => {
     const fetchBookedSeats = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/bookings/booked-seats", {
+        const { data } = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/api/bookings/booked-seats`, {
           params: {
             movieTitle: state.movieTitle,
             theater: state.theater,
@@ -37,7 +37,7 @@ const SeatSelectionPage = () => {
   const handleBooking = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/bookings",
+        `${import.meta.env.VITE_APP_BACKEND_URL}/api/bookings`,
         {
           movieTitle: state.movieTitle,
           theater: state.theater,
