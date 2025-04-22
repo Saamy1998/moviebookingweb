@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors"; // Import CORS
 import bookingRoutes from "./routes/bookingRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ mongoose
 
 // Routes
 app.use("/api/bookings", bookingRoutes);
+app.use("/auth", authRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 8000;
