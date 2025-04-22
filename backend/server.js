@@ -1,29 +1,28 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors"; // Import CORS
+import bookingRoutes from "./routes/bookingRoutes.js";
 
 dotenv.config();
 
 const app = express();
+
+// Enable CORS
+app.use(cors()); // Allow all origins by default
+
+// Middleware
 app.use(express.json());
-app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-// Sample Route
-app.get("/", (req, res) => {
-  res.send("Movie Booking Backend is Running...");
-});
-
-app.use("/auth", require("./routes/authRoutes"));
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+// Routes
+app.use("/api/bookings", bookingRoutes);
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

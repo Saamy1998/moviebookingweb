@@ -8,6 +8,7 @@ import SeatSelectionPage from "./pages/SeatSelectionPage";
 import PaymentPage from "./pages/PaymentPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BookingsPage from "./pages/BookingPage";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/select-seats" element={<SeatSelectionPage />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/bookings" element={<BookingsPage />} />
         </Routes>
       </main>
 
